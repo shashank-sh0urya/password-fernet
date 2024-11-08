@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Admin Dashboard</h2>
+<div class="admin-controls">
+    <!-- User Management Section -->
+    <section>
+        <h3>User Management</h3>
+        <a href="{{ url_for('create_user') }}">Create User</a><br>
+        <a href="{{ url_for('edit_user') }}">Edit User</a><br>
+        <a href="{{ url_for('delete_user') }}">Delete User</a>
+    </section>
+
+    <!-- Password Management Section -->
+    <section>
+        <h3>Password Management</h3>
+        <a href="{{ url_for('add_password') }}">Add Password</a><br>
+        <a href="{{ url_for('edit_password') }}">Edit Password</a><br>
+        <a href="{{ url_for('delete_password') }}">Delete Password</a><br>
+        <a href="{{ url_for('view_all_passwords') }}">View All Passwords</a>
+    </section>
+
+    <!-- Audit Logs and Reporting Section -->
+    <section>
+        <h3>Audit Logs and Reporting</h3>
+        <a href="{{ url_for('view_audit_logs') }}">View Audit Logs</a><br>
+        <a href="{{ url_for('generate_report') }}">Generate Compliance Report</a>
+    </section>
+
+    <!-- System Configuration Section -->
+    <section>
+        <h3>System Configuration</h3>
+        <a href="{{ url_for('configure_mfa') }}">Configure MFA</a><br>
+        <a href="{{ url_for('configure_ldap') }}">Configure LDAP/Active Directory</a>
+    </section>
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="dashboard-content">
+    <h2>Welcome, {{ username }}!</h2>
+
+    {% if role == 'admin' %}
+        <h3>Admin Dashboard</h3>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('create_user') }}">Create User</a></li>
+                <li><a href="{{ url_for('edit_user') }}">Edit User</a></li>
+                <li><a href="{{ url_for('delete_user') }}">Delete User</a></li>
+                <li><a href="{{ url_for('view_users') }}">View Users</a></li>
+                <li><a href="{{ url_for('view_all_passwords') }}">View All Passwords</a></li>
+                <li><a href="{{ url_for('view_audit_logs') }}">View Audit Logs</a></li>
+                <li><a href="{{ url_for('generate_report') }}">Generate Compliance Report</a></li>
+            </ul>
+        </nav>
+    {% elif role == 'manager' %}
+        <h3>Manager Dashboard</h3>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('add_password') }}">Add Password</a></li>
+                <li><a href="{{ url_for('edit_password') }}">Edit Password</a></li>
+                <li><a href="{{ url_for('delete_password') }}">Delete Password</a></li>
+                <li><a href="{{ url_for('view_all_passwords') }}">View All Passwords</a></li>
+            </ul>
+        </nav>
+    {% elif role == 'user' %}
+        <h3>User Dashboard</h3>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('view_personal_passwords') }}">View My Passwords</a></li>
+                <li><a href="{{ url_for('update_personal_info') }}">Update My Information</a></li>
+            </ul>
+        </nav>
+        <p>Welcome to your dashboard! Here you can view and manage your own passwords and personal information.</p>
+    {% else %}
+        <p>Access restricted. Please contact your administrator.</p>
+    {% endif %}
+</div>
+{% endblock %}

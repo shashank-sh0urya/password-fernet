@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Audit Logs</h2>
+<ul>
+    {% for log in logs %}
+        <li>{{ log.timestamp }} - {{ log.action }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

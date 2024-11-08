@@ -1,0 +1,14 @@
+{
+    "shashank": {
+        "password": "shashank",
+        "role": "admin"
+    },
+    "rolex": {
+        "password": "rolex",
+        "role": "manager"
+    },
+    "shourya": {
+        "password": "shourya",
+        "role": "user"
+    }
+}

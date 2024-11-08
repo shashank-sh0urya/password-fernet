@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise Password Management Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Password Management Tool</h1>
+        <nav>
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+            {% if session.get('role') == 'admin' %}
+                <a href="{{ url_for('admin_dashboard') }}">Admin Panel</a>
+                <a href="{{ url_for('create_user') }}">Create User</a>
+                <a href="{{ url_for('edit_user') }}">Edit User</a>
+                <a href="{{ url_for('delete_user') }}">Delete User</a>
+                <a href="{{ url_for('view_users') }}">View Users</a>
+            {% endif %}
+            {% if session.get('username') %}
+                <a href="{{ url_for('logout') }}">Logout</a>
+            {% else %}
+                <a href="{{ url_for('login') }}">Login</a>
+            {% endif %}
+        </nav>
+    </header>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="flash-messages">
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
