@@ -1,11 +1,151 @@
-{% extends "base.html" %}
-{% block content %}
-<form action="{{ url_for('login') }}" method="post">
-    <h2>Login</h2>
-    <label for="username">Username:</label>
-    <input type="text" name="username" required>
-    <label for="password">Password:</label>
-    <input type="password" name="password" required>
-    <button type="submit">Login</button>
-</form>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Body background with a password-related image */
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('bgimage.jpg'); /* Corrected syntax */
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        /* Header styling */
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .header h3 {
+            font-size: 18px;
+            font-weight: normal;
+        }
+
+        /* Centered login form container */
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            padding: 30px;
+            width: 320px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        /* Form title */
+        h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        /* Input styling */
+        label {
+            display: block;
+            text-align: left;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        /* Submit button styling */
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #5d3fd3; /* Purple color as in the example image */
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #4523a9; /* Darker purple on hover */
+        }
+
+        /* Additional links styling */
+        .forgot-password {
+            font-size: 12px;
+            color: #333;
+            text-decoration: none;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        .forgot-password:hover {
+            color: #5d3fd3; /* Match button color on hover */
+        }
+
+        .signup-link {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .signup-link a {
+            color: #5d3fd3;
+            text-decoration: none;
+        }
+
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header section for the title and subtitle -->
+    <div class="header">
+        <h1>Fernet Password Manager</h1>
+        <h3>For secure and easy handling of password</h3>
+    </div>
+
+    <!-- Login form container -->
+    <div class="login-container">
+        <form action="{{ url_for('login') }}" method="post">
+            <h2>Login</h2>
+            <label for="username">Username:</label>
+            <input type="text" name="username" required>
+            <label for="password">Password:</label>
+            <input type="password" name="password" required>
+            <button type="submit">Login</button>
+            <a href="#" class="forgot-password">Forgot password?</a>
+            <div class="signup-link">
+                Not a member? <a href="#">Sign up now</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
